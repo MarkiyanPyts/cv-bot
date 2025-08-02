@@ -8,9 +8,10 @@ load_dotenv(override=True)
 
 pdf_path = "me/Markiyan_Pyts_CV.pdf"
 summary_path = "me/summary.txt"
+name = "Markiyan Pyts CV Avatar"
 
 async def main():
-    cv_avatar = MyCVAvatar(name="Markiyan Pyts", pdf_path=pdf_path, summary_path=summary_path)
+    cv_avatar = MyCVAvatar(name=name, pdf_path=pdf_path, summary_path=summary_path)
 
     with trace("Protected Automated SDR"):
         result = await Runner.run(cv_avatar.agent, "what is markiyan birthday?")
