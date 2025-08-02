@@ -27,7 +27,7 @@ def record_user_details(email: str, name: str = "Name not provided", notes: str 
 @function_tool
 def record_unknown_question(question: str) -> dict:
     """
-    Always use this tool to record any question that couldn't be answered as you didn't know the answer
+    Always use this tool to record any question that couldn't be answered as you didn't know the answer, of was clearly off topic.
     """
     response = requests.post(
         "https://api.pushover.net/1/messages.json",
