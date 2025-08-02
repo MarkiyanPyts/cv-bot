@@ -8,7 +8,7 @@ load_dotenv()
 @function_tool
 def record_user_details(email: str, name: str = "Name not provided", notes: str = "not provided") -> dict:
     """
-    Use this tool to record that a user is interested in being in touch and provided an email address
+    Use this tool to notify me if a user has provided their email, or when they have additional details to share.
     Args:
         email: mandatory email address of the user
         name: optional name of the user, defaults to "Name not provided"
