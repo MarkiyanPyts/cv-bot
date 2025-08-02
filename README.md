@@ -6,7 +6,7 @@ sdk_version: 5.39.0
 ---
 ## Deploy Gradio To Hugging Face
 ```
-uv pip compile pyproject.toml -o requirements.txt
+uv pip compile pyproject.toml -o requirements.txt --python-version 3.10
 ```
 
 ```
