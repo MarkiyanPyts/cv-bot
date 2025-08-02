@@ -1,15 +1,12 @@
-from agents import Agent
 from pypdf import PdfReader
 from templates import create_cv_agent_instructions
+from my_tools import record_user_details, record_unknown_question, analyze_experience_duration
+from agents import Agent
 
-pdf_path = "me/Markiyan_Pyts_CV.pdf"
-summary_path = "me/summary.txt"
-
-class Me():
-    def __init__(self, name: str = "Markiyan Pyts"):
+class MyCVAvatar():
+    def __init__(self, name: str, pdf_path: str, summary_path: str):
         self.name = name
         
-
         reader = PdfReader(pdf_path)
         print(f"Loading PDF from: {pdf_path}")
         print(f"PDF has {len(reader.pages)} pages")
@@ -24,4 +21,9 @@ class Me():
         self.agent = self.create_agent()
 
     def create_agent(self):
-        return Agent(name=self.name, instructions=create_cv_agent_instructions(name=self.name, summary=self.summary, cv=self.cv),)
+        return Agent(
+            name=self.name,
+            instructions=create_cv_agent_instructions(name=self.name, summary=self.summary, cv=self.cv),
+            model="gpt-4o-mini",
+            tools=[record_user_details, record_unknown_question, analyze_experience_duration]
+        )
