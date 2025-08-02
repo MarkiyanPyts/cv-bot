@@ -73,17 +73,11 @@ def gradio_chat_streaming(message, history):
 # Create Gradio interface with streaming
 demo = gr.ChatInterface(
     fn=gradio_chat_streaming,
-    title="CV Bot - Chat with Markiyan's Resume (Streaming)",
-    description="Ask me anything about Markiyan's professional experience, skills, and background! Responses stream in real-time.",
-    examples=[
-        "What is Markiyan's professional experience?",
-        "What programming languages does Markiyan know?",
-        "Tell me about Markiyan's education",
-        "What projects has Markiyan worked on?",
-        "How long did Markiyan work at his previous companies?"
-    ],
+    chatbot=gr.Chatbot(show_label=False),
     theme=gr.themes.Soft(),
+    css="main { padding: 5px !important; } input, textarea { font-size: 16px !important; } .input-container { display: flex !important; gap: 10px !important; }"
 )
+
 
 if __name__ == "__main__":
     demo.launch()
