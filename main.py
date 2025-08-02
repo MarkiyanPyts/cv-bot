@@ -1,4 +1,4 @@
-from asyncio import Runner
+from agents import Runner
 from dotenv import load_dotenv
 from my_agents import MyCVAvatar
 import asyncio
