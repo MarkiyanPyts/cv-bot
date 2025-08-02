@@ -15,13 +15,23 @@ cv_avatar = MyCVAvatar(name="Markiyan Pyts", pdf_path=pdf_path, summary_path=sum
 async def chat_with_cv_bot(message, history):
     """Process user message and return bot response"""
     try:
-        # Run the agent with the user's message
-        result = await Runner.run(cv_avatar.agent, message)
+        # Build conversation context from history
+        conversation = []
+        for user_msg, assistant_msg in history:
+            conversation.append(f"User: {user_msg}")
+            conversation.append(f"Assistant: {assistant_msg}")
+        
+        # Add current message
+        conversation.append(f"User: {message}")
+        
+        # Join all messages into a single context string
+        full_context = "\n".join(conversation)
+        
+        # Run the agent with the full conversation context
+        result = await Runner.run(cv_avatar.agent, full_context)
         # Extract only the final output string from RunResult
-        if hasattr(result, 'output'):
-            return str(result.output)
-        else:
-            return str(result)
+        # The final_output attribute contains the actual response text
+        return result.final_output
     except Exception as e:
         return f"Error: {str(e)}"
 

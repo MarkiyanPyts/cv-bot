@@ -15,7 +15,7 @@ async def main():
 
     with trace("Protected Automated SDR"):
         result = await Runner.run(cv_avatar.agent, "what is markiyan birthday?")
-        print(f"Result: {result}")
+        print(f"Result: {result.final_output}")
 
 
 if __name__ == "__main__":
