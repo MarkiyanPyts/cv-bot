@@ -8,3 +8,7 @@ sdk_version: 5.39.0
 ```
 uv pip compile pyproject.toml -o requirements.txt
 ```
+
+```
+uv run gradio deploy
+```
