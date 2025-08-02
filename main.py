@@ -13,7 +13,7 @@ async def main():
     cv_avatar = MyCVAvatar(name="Markiyan Pyts", pdf_path=pdf_path, summary_path=summary_path)
 
     with trace("Protected Automated SDR"):
-        result = await Runner.run(cv_avatar, "how many years of experience do you have as a Solution Architect?")
+        result = await Runner.run(cv_avatar.agent, "how long did you study?")
         print(f"Result: {result}")
 
 
